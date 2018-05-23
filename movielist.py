@@ -54,7 +54,7 @@ def get_m_details(data):
    
     obj1= [get_imdb_info(f) for i,f in df.iterrows()]
     df= pd.concat([df,pd.DataFrame(obj1)],axis=1) 
-    df=df[:,["name","year","rating","url","link"]]
+    df=df[["name","year","rating","url","link"]]
     return df     
    
 
