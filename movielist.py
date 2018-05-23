@@ -1,3 +1,4 @@
+#%%writefile $filepth
 from bs4 import BeautifulSoup
 from retrying import retry
 from urllib.request import urlopen
@@ -53,6 +54,7 @@ def get_m_details(data):
    
     obj1= [get_imdb_info(f) for i,f in df.iterrows()]
     df= pd.concat([df,pd.DataFrame(obj1)],axis=1) 
+    df=df[:,["name","year","rating","url","link"]]
     return df     
    
 
@@ -67,12 +69,12 @@ def get_mdata(page_from,page_count,kind):
 def loadlist():
     df = pd.DataFrame()
     i=1
-    for pageData in get_mdata(1,10,0):
+    for pageData in get_mdata(1,50,0):
         rs=get_m_details(pageData)
         df=df.append(rs)
         print("listing done for ..page{}".format(i))
         i+=1  
-    df.to_csv(filename,mode='a')
+    df.to_csv(filename,mode='a',index=False)
 
     
 loadlist()
