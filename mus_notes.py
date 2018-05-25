@@ -1,7 +1,7 @@
 
 
 import time, sys
-import pysynth_p as psb
+import pysynth_b as psb
 from pygame import mixer
 import winsound
 
@@ -33,7 +33,7 @@ w_sargam=tuple((get_note(c,scale),duration) for c in sargam.split())
 
 print( w_sargam)
 
-psb.make_wav(w_sargam, fn="d://test.wav",  bpm = 200)  #tuple( w_sargam)
+psb.make_wav(w_sargam, fn="d://test.wav", leg_stac = 1, bpm = 200)  #tuple( w_sargam)
 winsound.PlaySound('d:/test.wav', winsound.SND_ASYNC)
 
 #C#    D#    F      F#     G#    a#    C      C#
